@@ -48,7 +48,7 @@ function preload() {
     );
 
   doll = safeLoad("assets/doll.png");
-  bgImage = safeLoad("assets/background.png");
+  bgImage = safeLoad("assets/background.jpeg");
   tryonTitleGif = safeLoad("assets/tryon.GIF");
   ootdTitleGif = safeLoad("assets/ootd.gif");
   bgMusic = loadSound(
