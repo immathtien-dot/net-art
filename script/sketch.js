@@ -48,7 +48,7 @@ function preload() {
     );
 
   doll = safeLoad("assets/doll.png");
-  bgImage = safeLoad("assets/background.jpeg");
+  bgImage = safeLoad("assets/background.png");
   tryonTitleGif = safeLoad("assets/tryon.GIF");
   ootdTitleGif = safeLoad("assets/ootd.gif");
   bgMusic = loadSound(
@@ -315,12 +315,34 @@ function setup() {
   // add classes for responsive CSS
   nameInputEl.elt.classList.add('p5-ui','p5-input');
   nameInputEl.attribute("placeholder", "Type the name");
+  nameInputEl.style("padding", "10px 14px");
+  nameInputEl.style("border-radius", "14px");
+  nameInputEl.style("border", "3px solid rgba(30,60,110,0.95)");
+  nameInputEl.style("box-sizing", "border-box");
+  nameInputEl.style("outline", "none");
+  nameInputEl.style("font-size", "18px");
+  nameInputEl.style("text-align", "center");
+  nameInputEl.style("line-height", "1.1");
+  nameInputEl.style("background", "rgba(255,255,255,0.88)");
+  nameInputEl.style("box-shadow", "0 10px 25px rgba(0,0,0,0.12)");
   nameInputEl.elt.addEventListener("keydown", (e) => {
     if (e.key === "Enter") startGameFromStartScreen();
   });
 
   enterButtonEl = createButton("Enter");
   enterButtonEl.elt.classList.add('p5-ui','p5-button');
+  enterButtonEl.style("border-radius", "14px");
+  enterButtonEl.style("border", "3px solid rgba(30,60,110,0.95)");
+  enterButtonEl.style("box-sizing", "border-box");
+  enterButtonEl.style("background", "rgba(255,255,255,0.92)");
+  enterButtonEl.style("color", "rgb(35, 65, 130)");
+  enterButtonEl.style("font-size", "18px");
+  enterButtonEl.style("display", "flex");
+  enterButtonEl.style("align-items", "center");
+  enterButtonEl.style("justify-content", "center");
+  enterButtonEl.style("line-height", "1");
+  enterButtonEl.style("cursor", "pointer");
+  enterButtonEl.style("box-shadow", "0 10px 25px rgba(0,0,0,0.12)");
   enterButtonEl.mousePressed(() => startGameFromStartScreen());
 
   showStartUI();
@@ -706,7 +728,7 @@ function draw() {
     }
   }
 
-  
+    // removed automatic center emission to keep effects user-driven
 
   // follow-draw: emit at pointer when active
   if (happyCelebration && followDrawActive) {
@@ -954,6 +976,7 @@ function emitParticle(x, y) {
   particles.push(new Particle(x, y, vx, vy, hue));
 }
 
+let lastParticleMillis = 0;
 
 function updateAndDrawParticles() {
   // use HSB color mode for rainbow hues
